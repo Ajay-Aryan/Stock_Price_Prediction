@@ -27,7 +27,7 @@ The model is compiled using the Adam optimizer and Mean Squared Error (MSE) loss
 
 ## Training
 
-The dataset is split into training (70%), validation (20%), and testing (10%) sets. Currently, only the training and validation sets are used for training and testing respectively. The actual testing data will be used in the last stage.
+The dataset is split into training sets(70%)(80% of which are for training and 20% for validation), testing sets (30% which we are not using at this moment). Currently, only the training and validation sets are used for training and testing respectively. The actual testing data will be used in the last stage.
 
 During training, both training and validation losses are monitored. The goal is to minimize these losses over epochs, indicating that the model is learning and improving its predictions.
 
