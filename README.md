@@ -2,9 +2,36 @@
 
 This repository contains code for training a neural network model to predict stock prices using historical stock data. The goal of the project is to build a model that can accurately forecast stock prices based on various features.
 
-## Dataset
+# Stakeholders
+Shareholders: Help them to closely track their investment. 
+Individual clients: Use stock price prediction tools to manage their own stocks and make a decision on stock selection.
 
-The dataset used for training the model is sourced from the [Individual Stocks Price](https://www.kaggle.com/camnugent/sandp500) dataset on Kaggle. It contains historical stock data for various companies over a period of 5 years.
+# KPI
+Data Quality: Preprocess the data to ensure that the data is clean and up-to-date.
+Model Performance: Employ neural networks to train the data. 
+Scalability: Measure the ability of the models to handle data of greater size.
+
+# Dataset
+The dataset used for training the model is sourced from the Individual Stocks Price dataset on Kaggle. It contains historical stock data for all S&P 500 companies over a period of 5 years. S&P 500 include some of the top U.S.-listed companies that are leaders within their industries and represent a bellwether for the U.S. economy. Companies must meet certain criteria, which are determined by the publishers of the index, before being added to the S&P.  The top ten S&P 500 companies with a percentage of the market they control in 2023 include;
+Apple (AAPL): 7.61%
+Microsoft (MSFT): 6.80%
+Amazon (AMZN): 3.15%
+NVIDIA (NVDA): 2.83%
+Alphabet Class A (GOOGL): 1.92%
+Tesla (TSLA): 1.84%
+Meta Platforms (META), formerly Facebook, Class A: 1.74%
+Alphabet Class C (GOOG): 1.66%
+Berkshire Hathaway (BRK.B): 1.64%
+UnitedHealth Group (UNH): 1.23%
+
+The data include the following details
+Date - in format: yy-mm-dd 
+Open - price of the stock at market open (this is NYSE data so all in USD)
+High - Highest price reached in the day
+Low Close - Lowest price reached in the day
+Volume - Number of shares traded
+Name - the stock's ticker name
+
 
 ## Preprocessing
 
