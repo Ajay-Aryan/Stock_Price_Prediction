@@ -1,0 +1,129 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import mean_squared_error
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, LSTM
+
+# We load the dataset from a CSV file
+path_to_dataset = r"C:\Users\dkg14\Desktop\AAP_data.csv"
+df = pd.read_csv(path_to_dataset)
+
+df = df.drop(columns=['Name', 'date'])
+
+# We add percentage-deltas from the previous day
+df['op%D'] = df['open'].pct_change() 
+df['hi%D'] = df['high'].pct_change() 
+df['lo%D'] = df['low'].pct_change()
+df['cl%D'] = df['close'].pct_change()
+df['vol%D'] = df['volume'].pct_change()
+
+# We drop NaN values
+df = df.dropna()
+
+print(df.head())
+
+# We drop everything except the percentage deltas
+df = df.drop(columns=['open', 'high', 'low', 'close', 'volume'])
+
+# We convert DataFrame to NumPy array
+data = df.to_numpy()
+
+# We split into train and test sets
+train_size = int(len(data) * 0.7)
+train, test = data[:train_size], data[train_size:]
+
+# We define window length and create sequences for training
+window_length = 15
+trainX, trainY = [], []
+for i in range(len(train) - window_length - 1):
+    trainX.append(train[i:i + window_length])
+    trainY.append(train[i + window_length, 3])
+
+trainX, trainY = np.array(trainX), np.array(trainY)
+
+testX, testY = [], []
+for i in range(len(test) - window_length - 1):
+    testX.append(test[i:i + window_length])
+    testY.append(test[i + window_length, 3])
+testX, testY = np.array(testX), np.array(testY)
+
+# We reshape the data for LSTM
+trainX = np.reshape(trainX, (trainX.shape[0], trainX.shape[1], trainX.shape[2]))
+testX = np.reshape(testX, (testX.shape[0], testX.shape[1], testX.shape[2]))
+
+# We make and train the model
+model = Sequential()
+model.add(LSTM(50, input_shape=(trainX.shape[1], trainX.shape[2])))
+model.add(Dense(1))
+model.compile(loss='mean_squared_error', optimizer='adam')
+
+#Alternative Model (Exploring Others)
+#model = Sequential()
+#model.add(LSTM(50, return_sequences=True, input_shape=(trainX.shape[1], trainX.shape[2])))
+#model.add(LSTM(50, return_sequences=True))
+#model.add(LSTM(50))
+#model.add(Dense(1))
+#model.compile(loss='mean_squared_error', optimizer='adam')
+
+
+print("BEGINNING TRAINING")
+
+model.fit(trainX, trainY, epochs=250, batch_size=1, verbose=2)
+
+print("TRAINING COMPLETE")
+
+# We Produce Training predictions using the model
+training_predictions = model.predict(trainX)
+
+# We calculate Mean-Squared-Error for training data
+training_MSE = mean_squared_error(trainY, training_predictions)
+print('Training MSE: %.2f' % training_MSE)
+
+# We plot the training predictions against the training values
+plt.figure(figsize=(12, 6))
+plt.plot(trainY, label='Real Values')
+plt.plot(training_predictions, label='Predicted Values')
+plt.xlabel('Time')
+plt.ylabel('Price')
+plt.title('Training Predictions vs Real Values')
+plt.legend()
+plt.show()
+
+# We generate test predictions using the model
+test_predictions = model.predict(testX)
+
+
+print(test_predictions.shape, trainY.shape)
+
+# We calculate Mean Squared Error for test data
+test_MSE = mean_squared_error(testY, test_predictions)
+print('Test MSE: %.2f' % test_MSE)
+
+# We plot the test predictions against the test values
+plt.figure(figsize=(12, 6))
+plt.plot(testY, label='Real Values')
+plt.plot(test_predictions, label='Predicted Values')
+plt.xlabel('Time')
+plt.ylabel('Price')
+plt.title('Test Predictions vs Real Values')
+plt.legend()
+plt.show()
+
+j = 0
+Z = 0
+while j < len(testY)-1:
+    if (test_predictions[j+1] - test_predictions[j] > 0) and (testY[j+1] - testY[j] > 0):
+        Z += 1
+        j += 1
+    elif (test_predictions[j+1] - test_predictions[j] < 0) and (testY[j+1] - testY[j] < 0):
+        Z += 1
+        j += 1
+    else:
+        j+= 1
+
+acc = Z / len(testY)
+
+
+print("Below is the accuracy in predicting the stocks movement:")
+print(acc)
