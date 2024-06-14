@@ -12,7 +12,7 @@ Model Performance: Employ neural networks to train the data.
 Scalability: Measure the ability of the models to handle data of greater size.
 
 # Dataset
-The dataset used for training the model is sourced from the Individual Stocks Price dataset on Kaggle. It contains historical stock data for all S&P 500 companies over a period of 5 years. S&P 500 include some of the top U.S.-listed companies that are leaders within their industries and represent a bellwether for the U.S. economy. Companies must meet certain criteria, which are determined by the publishers of the index, before being added to the S&P.  The top ten S&P 500 companies with a percentage of the market they control in 2023 include;
+The dataset used for training the model is sourced from the Individual Stocks Price dataset on [Kaggle](https://www.kaggle.com/datasets/camnugent/sandp500?resource=download). It contains historical stock data for all S&P 500 companies over a period of 5 years. S&P 500 include some of the top U.S.-listed companies that are leaders within their industries and represent a bellwether for the U.S. economy. Companies must meet certain criteria, which are determined by the publishers of the index, before being added to the S&P.  The top ten S&P 500 companies with a percentage of the market they control in 2023 include;
 Apple (AAPL): 7.61%
 Microsoft (MSFT): 6.80%
 Amazon (AMZN): 3.15%
