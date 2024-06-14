@@ -44,13 +44,9 @@ Before training the model, the data is preprocessed as follows:
 
 ## Model Architecture
 
-The neural network model is built using TensorFlow's Keras API with the following architecture:
+............
 
-- Input layer: Dense layer with 64 units and ReLU activation function.
-- Hidden layers: Two Dense layers with 32 and 16 units respectively, both with ReLU activation.
-- Output layer: Dense layer with 1 unit and linear activation function.
 
-The model is compiled using the Adam optimizer and Mean Squared Error (MSE) loss function.
 
 ## Training
 
