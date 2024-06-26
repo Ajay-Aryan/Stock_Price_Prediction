@@ -42,11 +42,6 @@ Before training the model, the data is preprocessed as follows:
 - Data is split into features (X) and target (y).
 - Features are normalized using Min-Max scaling.
 
-## Model Architecture
-
-............
-
-
 
 ## Training
 
@@ -56,7 +51,7 @@ During training, both training and validation losses are monitored. The goal is 
 
 ## Evaluation
 
-After training, the model is evaluated on the validation set using Mean Squared Error (MSE). Additionally, predictions are made on the validation set, allowing qualitative assessment of the model's performance.
+After training, the model is evaluated on the validation set using Mean Squared Error (MSE). Additionally, predictions are made on the validation set, allowing qualitative assessment of the model's performance. It was found that compared to sliding window linear regression and LSTM models, the simple naive prediction performed the best in our analysis.
 
 ## Future Work
 
