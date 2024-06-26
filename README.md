@@ -55,7 +55,7 @@ After training, the model is evaluated on the validation set using Mean Squared 
 
 ## Future Work
 
-Currently, only the stock data for one company (AAP) is used for prediction. In future iterations, data for all companies will be incorporated to build a more comprehensive model.
+Currently, only the stock data for one company (AAP) is used for prediction. In future iterations, data for all companies will be incorporated to build a more comprehensive model. As well, it is likely this project will be updated with various models to compare their success against the naive prediction.
 
 ## Contributing
 
