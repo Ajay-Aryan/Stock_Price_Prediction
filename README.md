@@ -41,10 +41,7 @@ Before training the model, the data is preprocessed as follows:
 
 ## Training
 
-The dataset is split into training sets(70%) (80% of which are for training and 20% for validation), testing sets (30% which we are not using at this moment). Currently, only the training and validation sets are used for training and testing respectively. The actual testing data will be used in the last stage.
-
-During training, both training and validation losses are monitored. The goal is to minimize these losses over epochs, indicating that the model is learning and improving its predictions.
-
+The dataset is split into training (70%) and testing sets (30%), with the testing set reserved for final evaluation. The training set is further divided into training (80%) and validation (20%) subsets. The model's performance is monitored using training and validation losses, aiming to minimize these losses over epochs.
 ## Evaluation
 
 After training, the model is evaluated on the validation set using Mean Squared Error (MSE). Additionally, predictions are made on the validation set, allowing qualitative assessment of the model's performance. It was found that compared to sliding window linear regression and LSTM models, the simple naive prediction performed the best in our analysis.
