@@ -3,7 +3,7 @@
 This repository contains code for training a neural network model to predict stock prices using historical stock data. The goal of the project is to build a model that can accurately forecast stock prices based on various features. All models utilize a sliding-window based approach where a fixed number of previous days generate a prediction of the next day's price.
 
 # Stakeholders
-Shareholders: Help them to closely track their investment. 
+Shareholders: Predict the direction of their investment.  
 
 Individual clients: Use stock price prediction tools to manage their own stocks and make a decision on stock selection.
 
