@@ -4,6 +4,7 @@ This repository contains code for training a neural network model to predict sto
 
 # Stakeholders
 Shareholders: Help them to closely track their investment. 
+
 Individual clients: Use stock price prediction tools to manage their own stocks and make a decision on stock selection.
 
 # KPI
