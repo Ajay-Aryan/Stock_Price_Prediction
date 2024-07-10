@@ -1,6 +1,6 @@
 # Stock Price Prediction using Neural Networks
 
-This repository contains code for training a neural network model to predict stock prices using historical stock data. The goal of the project is to build a model that can accurately forecast stock prices based on various features. All models utilize a sliding-window based approach where a fixed number of previous days generate a prediction of the next day's price.
+This repository contains code for training various models to predict closing stock prices for a stock using its historical closing price data. The goal of the project is to build a model that can accurately forecast these closing stock prices one day out based on all its previous closing price data. All of these models utilize a sliding-window based approach where a fixed number of previous days generate the prediction of the next day's price.
 
 # Stakeholders
 Shareholders: Predict the direction of their investment.  
@@ -36,21 +36,17 @@ Before training the model, the data is preprocessed as follows:
 - Date column is converted to datetime format.
 - Irrelevant columns such as 'Name' and 'date' are dropped.
 - Data is split into features (X) and target (y).
-- Features are normalized using Min-Max scaling.
-
 
 ## Training
 
-The dataset is split into training (70%) and testing sets (30%), with the testing set reserved for final evaluation. The training set is further divided into training (80%) and validation (20%) subsets. The model's performance is monitored using training and validation losses.
-
+The dataset is split into training (80%) and testing set (20%). The testing set is reserved for the model which obtains the best evaluation result where the evaluation method described below in  ## Evaluation.
 
 ## Evaluation
-
-After training, the models were cross-validated using Mean Squared Error (MSE). It was found that compared to sliding window linear regression and LSTM models, the simple naive prediction performed the best in our analysis.
+The models were evaluated using four-fold time series cross validation on the training set. Thus, the training set is partitioned into four contiguous sets with the first set reserved strictly for training and the last 3 being validation sets. We use the validation sets are compared to our predictions using Mean Squared Error (MSE). The method which obtains the lowest average among the three MSE computed is the method which we use on the testing set. It was found that compared to sliding window linear regression and LSTM models, the simple naive prediction performed the best in our analysis.
 
 ## Future Work
 
-Currently, only the stock data for one company (AAP) is used for prediction. In future iterations, data for all companies will be incorporated to build a more comprehensive model. As well, it is likely this project will be updated with various models to compare their success against the naive prediction.
+Currently, our models do not take in any quantitative or probablistic theory of the stock market and are simply general methods for time series data prediction. This highlights the complexity of stock data and our future models will incorporate this. Moreover, only the stock data for one company (AAP) is used for prediction. In future iterations, data for all companies will be incorporated to build a more comprehensive model. As well, it is likely this project will be updated with various models to compare their success against the naive prediction.
 
 ## Contributing
 
